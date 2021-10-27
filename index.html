@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <nav>
+            <img class="logo" src="logo.png" alt="logo">
+        </nav>
+        <div class="container">
+            <div class="chat-box" id="chat-box">
+                <!-- <div class="msg-list left">
+                    <div class="message">
+                        <b>Aman:</b> Hello ! 1
+                    </div>
+                </div>
+
+                <div class="msg-list right">
+                    <div class="message">
+                        <b>Naman:</b> Hello, Aman! 2
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="send-box">
+            <form action="" id="msg-send-form">
+                <input type="text" name="" id="msg-input" class="msg-input">
+                <button type="submit" class="send-btn">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="js/client.js"></script>
+</body>
+
+</html>
