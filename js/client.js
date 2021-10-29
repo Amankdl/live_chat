@@ -1,6 +1,6 @@
 // client side server work will go here
 
-const socket = io('http://localhost:8000');
+const socket = io('http://192.168.1.3:8080');
 
 const name = prompt("Tell me your name pls.");
 const form = $('#msg-send-form');
@@ -44,7 +44,7 @@ socket.on('user-joined', name => {
     });
 });
 
-socket.on('recieve', data => {
+socket.on('receive', data => {
     append('left', data);
 });
 
