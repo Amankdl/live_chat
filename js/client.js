@@ -27,7 +27,7 @@ function append(position, data) {
 $("#msg-send-form").on("submit", function (e) {
     e.preventDefault();
     const message = $('#msg-input').val();
-    socket.emit('send', message);
+    socket.emit('send', {id: 123456789, message : message});
     append('right', {
         name: "You",
         message
