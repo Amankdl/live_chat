@@ -6,6 +6,7 @@ const io = require('socket.io')(http);
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const Users = require('./models/users');
+const Chat = require('./models/chat');
 
 // const io = require("socket.io")(8080,{
 //     cors: {
@@ -22,9 +23,9 @@ app.use(express.json())
 // Connect to mongodb
 const dbURI = "mongodb+srv://amankdl:qwertypoi@learnnode.0wehc.mongodb.net/learnnode?retryWrites=true&w=majority";
 mongoose.connect(dbURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then((result) => {
         http.listen(8080, () => {
             console.log("Server started");
@@ -194,12 +195,14 @@ io.on('connection', socket => {
         socket.broadcast.emit("user-joined", name);
     });
 
-    socket.on('send', data => {
-        chats[chatCount++] = {
-            id: data.id,
+    socket.on('send', async data => {
+        const chat = new Chat({
+            user_id: data.id,
             message: data.message,
+            index: chatCount++,
             time: new Date()
-        };
+        });
+        await chat.save();
         socket.broadcast.emit("receive", {
             message: data.message,
             name: users[socket.id]
